@@ -63,65 +63,46 @@ print(factorial(5))
 
 โดยทั่วไปแล้วพื้นฐานจะมี Bubble Sort ,  Insertion Sort และ Selection Sort
 
-1. **Bubble Sort** <br>
+# 1. **Bubble Sort** <br>
 &emsp;  เปรียบเทียบข้อมูลที่อยู่ติดกัน แล้วสลับตำแหน่งของข้อมูลคู่นั้น หากเรียงลำดับไม่ถูกต้องจะทำซ้ำไปเรื่อยๆ จนไม่มีการสลับอีก
 
 ![bubble sort](/image/animate/bubble-sort.gif)
 
-### code c++ bubble sort จะมีหน้าตาประมาณนี้
+### code python bubble sort จะมีหน้าตาประมาณนี้
 
-```c++
-#include <iostream>
-#include <vector>
-using namespace std;
+```python
+def bubble_sort(arr):
+    n = len(arr)
 
-void bubbleSort(vector<int> &arr) {
-  int n = arr.size();
-  bool swapped;
+    for i in range(n - 1):
+        swapped = False
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+                swapped = True
 
-  for (int i = 0; i < n - 1; i++) {
-    swapped = false;
-    for (int j = 0; j < n - i - 1; j++) {
-      if (arr[j] > arr[j + 1]) {
-        // Swap arr[j] and arr[j+1]
-        int temp = arr[j];
-        arr[j] = arr[j + 1];
-        arr[j + 1] = temp;
-        swapped = true;
-      }
-    }
+        print(f"Pass {i + 1}: ", end="")
+        for k in range(n):
+            print(arr[k], end=" ")
+        print()
 
-    // Visualize current state of array
-    cout << "Pass " << i + 1 << ": ";
-    for (int k = 0; k < n; k++) {
-      cout << arr[k] << " ";
-    }
-    cout << "\n";
+        if not swapped:
+            break
 
-    // If no swaps occurred, array is sorted
-    if (!swapped)
-      break;
-  }
-}
+if __name__ == "__main__":
+    arr = [5, 3, 1, 4, 2]
 
-int main() {
-  vector<int> arr = {5, 3, 1, 4, 2};
+    print("Initial Array: ", end="")
+    for x in arr:
+        print(x, end=" ")
+    print("\n")
 
-  cout << "Initial Array: ";
-  for (int i = 0; i < arr.size(); i++) {
-    cout << arr[i] << " ";
-  }
-  cout << "\n\n";
+    bubble_sort(arr)
 
-  bubbleSort(arr);
-
-  cout << "\nSorted Array: ";
-  for (int i = 0; i < arr.size(); i++) {
-    cout << arr[i] << " ";
-  }
-
-  return 0;
-}
+    print("\nSorted Array: ", end="")
+    for x in arr:
+        print(x, end=" ")
+    print()
 ```
 
 - Time Complexity: O(n²) worst/average, O(n) best (ถ้าข้อมูลเรียงอยู่แล้ว)
@@ -129,217 +110,234 @@ int main() {
 - ข้อดี: เข้าใจง่าย เขียนง่าย
 - ข้อเสีย: ช้ามากเมื่อข้อมูลเยอะ
 
-2. **Insertion Sort**<br>
+# 2. **Insertion Sort**<br>
 &emsp; นำข้อมูลแต่ละตัวไปแทรกไว้ในตำแหน่งที่ถูกต้องภายในแถวข้อมูลที่เรียงลำดับเสร็จแล้ว (เหมือนเรียงไพ่)
 
 ![insertion](/image/animate/insertion-sort.gif)
 
-### code c++ insertion sort จะมีหน้าตาประมาณนี้
+### code python insertion sort จะมีหน้าตาประมาณนี้
 
-```c++
-#include <iostream>
-#include <vector>
-using namespace std;
+```python
+def insertion_sort(arr):
+    n = len(arr)
 
-void insertionSort(vector<int> &arr) {
-  int n = arr.size();
+    for i in range(1, n):
+        key = arr[i]
+        j = i - 1
 
-  for (int i = 1; i < n; i++) {
-    int key = arr[i];
-    int j = i - 1;
+        while j >= 0 and arr[j] > key:
+            arr[j + 1] = arr[j]
+            j -= 1
 
-    // Move elements of arr[0..i-1], that are greater than key, to one position
-    // ahead of their current position
-    while (j >= 0 && arr[j] > key) {
-      arr[j + 1] = arr[j];
-      j--;
-    }
+        arr[j + 1] = key
 
-    // Insert key into the sorted part
-    arr[j + 1] = key;
+        print(f"Pass {i}: ", end="")
+        for k in range(n):
+            print(arr[k], end=" ")
+        print()
 
-    // Print current state of array
-    cout << "Pass " << i << ": ";
-    for (int k = 0; k < n; k++) {
-      cout << arr[k] << " ";
-    }
-    cout << "\n";
-  }
-}
+if __name__ == "__main__":
+    arr = [5, 3, 1, 4, 2]
 
-int main() {
-  vector<int> arr = {5, 3, 1, 4, 2};
+    print("Initial Array: ", end="")
+    for x in arr:
+        print(x, end=" ")
+    print("\n")
 
-  cout << "Initial Array: ";
-  for (int i = 0; i < arr.size(); i++) {
-    cout << arr[i] << " ";
-  }
-  cout << "\n\n";
+    insertion_sort(arr)
 
-  insertionSort(arr);
-
-  cout << "\nSorted Array: ";
-  for (int i = 0; i < arr.size(); i++) {
-    cout << arr[i] << " ";
-  }
-
-  return 0;
-}
+    print("\nSorted Array: ", end="")
+    for x in arr:
+        print(x, end=" ")
+    print()
 ```
 
 - Time Complexity: O(n²) worst, O(n) best
 - ข้อดี: เหมาะกับข้อมูลที่เกือบเรียงอยู่แล้ว หรือข้อมูลจำนวนน้อย เช่น เพิ่มตัวละครใหม่เข้าคิวที่เรียงอยู่แล้ว
 
-3. **Selection Sort** <br>
+# 3. **Selection Sort** <br>
 &emsp; หาค่าที่น้อยที่สุด หรือมากที่สุด ในส่วนที่ยังไม่ได้เรียงแล้วนำไปสลับไปไว้ตำแหน่งหน้าสุด ทำซ้ำไปเรื่อยๆ จนไม่สลับอีก
 
 ![selection sort](/image/animate/selection-sort.gif)
 
-### code c++ Selection sort จะมีหน้าตาประมาณนี้
+### code python Selection sort จะมีหน้าตาประมาณนี้
 
-```c++
-#include <iostream>
-#include <vector>
-using namespace std;
+```python
+def selection_sort(arr):
+    n = len(arr)
 
-void selectionSort(vector<int> &arr) {
-  int n = arr.size();
+    for i in range(n - 1):
+        min_index = i
+        for j in range(i + 1, n):
+            if arr[j] < arr[min_index]:
+                min_index = j
 
-  for (int i = 0; i < n - 1; i++) {
-    // Find the minimum element in unsorted array
-    int minIndex = i;
-    for (int j = i + 1; j < n; j++) {
-      if (arr[j] < arr[minIndex]) {
-        minIndex = j;
-      }
-    }
+        arr[i], arr[min_index] = arr[min_index], arr[i]
 
-    // Swap the found minimum element with the first element
-    int temp = arr[minIndex];
-    arr[minIndex] = arr[i];
-    arr[i] = temp;
+        print(f"Pass {i + 1}: ", end="")
+        for k in range(n):
+            print(arr[k], end=" ")
+        print()
 
-    // Print current state of array
-    cout << "Pass " << i + 1 << ": ";
-    for (int k = 0; k < n; k++) {
-      cout << arr[k] << " ";
-    }
-    cout << "\n";
-  }
-}
+if __name__ == "__main__":
+    arr = [5, 3, 1, 4, 2]
 
-int main() {
-  vector<int> arr = {5, 3, 1, 4, 2};
+    print("Initial Array: ", end="")
+    for x in arr:
+        print(x, end=" ")
+    print("\n")
 
-  cout << "Initial Array: ";
-  for (int i = 0; i < arr.size(); i++) {
-    cout << arr[i] << " ";
-  }
-  cout << "\n\n";
+    selection_sort(arr)
 
-  selectionSort(arr);
-
-  cout << "\nSorted Array: ";
-  for (int i = 0; i < arr.size(); i++) {
-    cout << arr[i] << " ";
-  }
-
-  return 0;
-}
+    print("\nSorted Array: ", end="")
+    for x in arr:
+        print(x, end=" ")
+    print()
 ```
 
 - Time Complexity: O(n²) ทุกกรณี
 - Space Complexity: O(1)
 - ข้อดี: จำนวนการสลับข้อมูล (swap) น้อยกว่า Bubble Sort
 
-4. **Merge Sort** <br>
+# 4. **Merge Sort** <br>
 &emsp;แบ่งข้อมูลเป็นครึ่งๆ ทำซ้ำจนเหลือ 1 ตัว แล้วรวมพร้อทเรียงลำดับ
 
-```csharp
-void MergeSort(int[] arr, int left, int right)
-{
-    if (left >= right) return; // base case
+### code python Merge sort จะมีหน้าตาประมาณนี้
 
-    int mid = (left + right) / 2;
-    MergeSort(arr, left, mid);       // recursive call ครึ่งซ้าย
-    MergeSort(arr, mid + 1, right);  // recursive call ครึ่งขวา
-    Merge(arr, left, mid, right);
-}
+```python
+def merge(arr, left, mid, right):
+    left_part = arr[left : mid + 1]
+    right_part = arr[mid + 1 : right + 1]
+
+    i = 0  # ตัวชี้ใน left_part
+    j = 0  # ตัวชี้ใน right_part
+    k = left  # ตัวชี้ใน arr หลัก
+
+    while i < len(left_part) and j < len(right_part):
+        if left_part[i] <= right_part[j]:
+            arr[k] = left_part[i]
+            i += 1
+        else:
+            arr[k] = right_part[j]
+            j += 1
+        k += 1
+
+    while i < len(left_part):
+        arr[k] = left_part[i]
+        i += 1
+        k += 1
+
+    while j < len(right_part):
+        arr[k] = right_part[j]
+        j += 1
+        k += 1
+
+
+def merge_sort(arr, left, right):
+    if left >= right:  # base case
+        return
+
+    mid = (left + right) // 2
+    merge_sort(arr, left, mid)  # recursive call 
+    merge_sort(arr, mid + 1, right)  
+    merge(arr, left, mid, right)
+
+if __name__ == "__main__":
+    arr = [5, 3, 1, 4, 2]
+    print("Initial Array:", arr)
+
+    merge_sort(arr, 0, len(arr) - 1)
+
+    print("Sorted Array: ", arr)
 ```
 
 - Time Complexity: O(n log n) ทุกกรณี — เสถียรกว่า Quick Sort
 - Space Complexity: O(n) เพราะต้องใช้ array เสริม
 - เป็นตัวอย่างคลาสสิกของ Recursion
 
-5. **Quicksort**<br>
+# 5. **Quicksort**<br>
 &emsp; เลือก ข้อมูลตัวหนึ่งเป็นจุดอ้างอิง (pivot) แบ่งข้อมูลออกเป็นสองส่วน คือ ข้อมูลที่น้อยกว่าจุดอ้างอิงและข้อมูลที่มากกว่าหรือเท่ากับจุดอ้างอิง แล้วจึงเรียงลำดับข้อมูลทั้งสองส่วนนั้น
 
-```csharp
-void QuickSort(int[] arr, int low, int high)
-{
-    if (low < high)
-    {
-        int pivotIndex = Partition(arr, low, high);
-        QuickSort(arr, low, pivotIndex - 1);   // recursive
-        QuickSort(arr, pivotIndex + 1, high);  // recursive
-    }
-}
+### code python Quicksort จะมีหน้าตาประมาณนี้
+
+```python
+def partition(arr, low, high):
+    pivot = arr[high]  # เลือกตัวสุดท้ายเป็น Pivot
+    i = low - 1  # ตำแหน่งของตัวที่น้อยกว่า Pivot
+
+    for j in range(low, high):
+        # ถ้าเจอค่าที่น้อยกว่าหรือเท่ากับ Pivot
+        if arr[j] <= pivot:
+            i += 1
+            arr[i], arr[j] = arr[j], arr[i]  # สลับตำแหน่ง
+
+    # สลับตำแหน่ง Pivot 
+    arr[i + 1], arr[high] = arr[high], arr[i + 1]
+    return i + 1
+
+
+def quick_sort(arr, low, high):
+    if low < high:
+        pivot_index = partition(arr, low, high)
+        quick_sort(arr, low, pivot_index - 1)  # recursive call ครึ่งซ้าย
+        quick_sort(arr, pivot_index + 1, high)  # recursive call ครึ่งขวา
+
+if __name__ == "__main__":
+    arr = [5, 3, 1, 4, 2]
+    print("Initial Array:", arr)
+
+    quick_sort(arr, 0, len(arr) - 1)
+
+    print("Sorted Array: ", arr)
 ```
 
-6. **Heapsort** <br>
+# 6. **Heapsort** <br>
 &emsp; สร้างโครงสร้างข้อมูลแบบ heap จากข้อมูลที่ต้องการเรียงลำดับ จากนั้นดึงข้อมูลที่ใหญ่ที่สุด (หรือเล็กที่สุด) ออกจาก heap ทีละตัวเพื่อสร้างแถวข้อมูลที่เรียงลำดับออกมา
 
-```java
-public class HeapSort {
+### code python Heapsort จะมีหน้าตาประมาณนี้
 
-    public static void main(String[] args) {
-        int[] arr = {12, 11, 13, 5, 6, 7};
+```python
+def heapify(arr, n, i):
+    largest = i
+    left = 2 * i + 1
+    right = 2 * i + 2
 
-        heapSort(arr);
+    # ตรวจสอบว่าโหนดลูกทางซ้ายมีค่ามากกว่าโหนดแม่หรือไม่
+    if left < n and arr[left] > arr[largest]:
+        largest = left
 
-        System.out.print("Sorted array: ");
-        for (int val : arr) {
-            System.out.print(val + " ");
-        }
-    }
+    # ตรวจสอบว่าโหนดลูกทางขวามีค่ามากกว่าโหนดแม่หรือไม่
+    if right < n and arr[right] > arr[largest]:
+        largest = right
 
-    public static void heapSort(int[] arr) {
-        int n = arr.length;
-        for (int i = n / 2 - 1; i >= 0; i--) {
-            heapify(arr, n, i);
-        }
+    # ถ้าตำแหน่งที่มีค่าน้อยที่สุดไม่ใช่โหนดแม่เดิม ให้ทำการสลับ
+    if largest != i:
+        arr[i], arr[largest] = arr[largest], arr[i]
+        heapify(arr, n, largest)  
 
-        for (int i = n - 1; i > 0; i--) {
-            int temp = arr[0];
-            arr[0] = arr[i];
-            arr[i] = temp;
+def heap_sort(arr):
+    n = len(arr)
 
-            heapify(arr, i, 0);
-        }
-    }
+    # 1. สร้าง Max Heap (Rearrange array)
+    for i in range(n // 2 - 1, -1, -1):
+        heapify(arr, n, i)
 
-    private static void heapify(int[] arr, int n, int i) {
-        int largest = i;       
-        int left = 2 * i + 1;  
-        int right = 2 * i + 2; 
-        
-        if (left < n && arr[left] > arr[largest]) {
-            largest = left;
-        }
+    # 2. ดึงทีละตัวออกจาก Heap และสลับไปไว้ท้ายสุด
+    for i in range(n - 1, 0, -1):
+        arr[0], arr[i] = arr[i], arr[0]  # สลับ root (ค่ามากสุด) ไปไว้หลังสุด
+        heapify(arr, i, 0)  # เรียก heapify ที่ root ใหม่
 
-        if (right < n && arr[right] > arr[largest]) {
-            largest = right;
-        }
 
-        if (largest != i) {
-            int swap = arr[i];
-            arr[i] = arr[largest];
-            arr[largest] = swap;
+# ส่วนของการทำงานหลัก (main)
+if __name__ == "__main__":
+    arr = [12, 11, 13, 5, 6, 7]
 
-            heapify(arr, n, largest);
-        }
-    }
-}
+    heap_sort(arr)
+
+    print("Sorted array: ", end="")
+    for val in arr:
+        print(val, end=" ")
+    print()
 ```
 - Time Complexity: $O(n \log n)$ การันตีความเร็วเท่านี้ทั้งกรณี Best, Average และ Worst Case
 - Space Complexity: $O(1)$ In-place Sorting ไม่จำเป็นต้องสร้าง Array เพิ่ม
