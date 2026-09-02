@@ -66,7 +66,7 @@ print(factorial(5))
 # 1. **Bubble Sort** <br>
 &emsp;  เปรียบเทียบข้อมูลที่อยู่ติดกัน แล้วสลับตำแหน่งของข้อมูลคู่นั้น หากเรียงลำดับไม่ถูกต้องจะทำซ้ำไปเรื่อยๆ จนไม่มีการสลับอีก
 
-![bubble sort](/image/animate/bubble-sort.gif)
+![bubble sort](/Research/animate/bubble-sort.gif)
 
 ### code python bubble sort จะมีหน้าตาประมาณนี้
 
@@ -113,7 +113,7 @@ if __name__ == "__main__":
 # 2. **Insertion Sort**<br>
 &emsp; นำข้อมูลแต่ละตัวไปแทรกไว้ในตำแหน่งที่ถูกต้องภายในแถวข้อมูลที่เรียงลำดับเสร็จแล้ว (เหมือนเรียงไพ่)
 
-![insertion](/image/animate/insertion-sort.gif)
+![insertion](/Research/animate/insertion-sort.gif)
 
 ### code python insertion sort จะมีหน้าตาประมาณนี้
 
@@ -158,7 +158,7 @@ if __name__ == "__main__":
 # 3. **Selection Sort** <br>
 &emsp; หาค่าที่น้อยที่สุด หรือมากที่สุด ในส่วนที่ยังไม่ได้เรียงแล้วนำไปสลับไปไว้ตำแหน่งหน้าสุด ทำซ้ำไปเรื่อยๆ จนไม่สลับอีก
 
-![selection sort](/image/animate/selection-sort.gif)
+![selection sort](/Research/animate/selection-sort.gif)
 
 ### code python Selection sort จะมีหน้าตาประมาณนี้
 

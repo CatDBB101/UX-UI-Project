@@ -45,7 +45,14 @@ matrix = [
 
 มองเป็นภาพกล่องใส่ของที่เราวางลองทับลงไปเรื่อย ๆ แล้วเวลาเอาของออกก็ต้องเอาของด้านบานออกก่อน
 
-![stack](/image/animate/stack.gif)
+![stack](/Research/animate/stack.gif)
+
+**สรุป Stack**
+
+- Stack ใช้ระบบ LIFO (Last-In-First-Out) ซึ่งหมายความว่าข้อมูลที่ถูกเพิ่มล่าสุดจะถูกนำออกก่อนข้อมูลที่เพิ่มมาก่อนหน้า
+- Stack เต็มหรือไม่ Stack มี Pointer 1 ตัวที่ชี้ไปยังตัวบนสุดของ Stack เพื่อเข้าถึงข้อมูลบนสุด
+- การเพิ่มและลบข้อมูลผ่านทางเดียวก็คือตัว top นั่นเอง
+- มักใช้กับงานแบบ backtracking เช่น undo/redo functionality
 
 ### Queue data structure คืออะไร
 
@@ -53,7 +60,16 @@ matrix = [
 
 เหมือนท่อส่งน้ำ น้ำเข้าจากบนสุด น้ำออกจากข้างล้าง
 
-![Queue](/image/animate/Queue.gif)
+![Queue](/Research/animate/Queue.gif)
+
+**สรุป Queue**
+
+- Queue ใช้ระบบ FIFO (First-In-First-Out) ซึ่งหมายความว่าข้อมูลที่ถูกเพิ่มล่าสุดจะถูกใช้งานก่อนข้อมูลที่เพิ่มมาก่อนหน้า
+- Queue มี Pointer 2 ตัว: ตัวหนึ่งชี้ไปที่ตัวหน้า (Front, Head) และตัวอีกตัวชี้ไปที่ตัวท้าย (Rear, Tail)
+- การเพิ่มและลบข้อมูลข้อมูลคนละด้านโดยเพิ่มจะต้องนำข้อมูลไปต่อกับ rear และลบจะนำข้อมูลออกจาก front
+- มักใช้กับการทำงานตามลำดับเช่น handling requests หรือ scheduling tasks
+
+### อ้างอิง
 
 - [borntodev.com](https://www.borntodev.com/2023/09/26/stack-%E0%B9%81%E0%B8%A5%E0%B8%B0-queue/)
 - [expert programming](https://expert-programming-tutor.com/tutorial/article/KE003282_Stack_and_Queue_in_Data_Structures_-_What_is_a_Queue.php)
